@@ -1,0 +1,26 @@
+XQuery statement for finding all student in year 3 currently taught by Alexandra
+
+let $subms := doc("teachers.xml")/teachers/teacher[name="Alexandra Cristea"]//submodule[year="2019-2020"]  
+
+for $stu in doc("students.xml")/students[@year="2019-2020"]/student[@enrolmentData="2017"]
+
+WHERE SOME $s IN $subms SATSIFIES contains($stu//submodule/text(), $s/name/text())
+
+RETURN $stu
+    
+
+i. The question asks for a list of all students who are currently being taught by Alexandra. My solution solves this as it only accesses submodules being taught in the year 2020 by Alexandra, and only uses students who were enrolled in 2017, i.e. are in their third year of study.
+ii. The only limitation I can think of is that it is only relevant in the current year. If the database were extended in future years and the same question were asked again, the results are only from using 2020 as the 'current' reference point. Also as the students names are not stored properly in the xml file I can't simply return a list of their names, I have to return the entire student element.
+iii. 
+
+<student enrolmentDate = "2017">
+    <name>John Smith</name>
+    <course>
+        <name>Software, Systems and Applications III</name>
+        <submodule>Advanced Databases</submodule>
+        <submodule>Web Technology</submodule>
+    </course>
+    <course>Computing Methodologies III</course>
+</student>
+
+iv. This is not possible in XPath as one cannot join files in XPath.

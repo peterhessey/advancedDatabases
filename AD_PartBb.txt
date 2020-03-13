@@ -1,3 +1,27 @@
 XPath query to find all teachers who teach advanced databases this year
 
-/teachers//teacher[/sub]
+doc("teachers.xml")/teachers//teacher[//submodule[name="Advanced Databases"][year="2019-2020"]]
+
+i. I interpreted the natural language query as asking for all teacher elements that teach Advanced Databases in the year 2020. My query returns all such elements and is therefore appropriate.
+ii. As in question a), the elements themselves, instead of the teacher names, are returned. This could be a limitation due to misinterpretation of the natural language query. Otherwise I believe there are no limitaitons.
+iii. 
+
+<teacher joiningDate = "2018" jobRole= "Professor">
+    <name>Alexandra Cristea</name>
+    <course>
+        <name>Software, Systems and Applications III</name>
+        <submodule>
+            <name>Advanced Databases</name>
+            <year>2018-2019</year>
+            <year>2019-2020</year>
+        </submodule>
+    </course>
+    <course>
+        <name>Software, Systems and Applications IV</name>
+        <submodule>
+            <name>Semantic Web</name>
+            <year>2018-2019</year>
+            <year>2019-2020</year>
+        </submodule>
+    </course>
+</teacher>

@@ -1,0 +1,15 @@
+XQuery statement to find how many yers Professor Cristea has been teaching 'Advanced Databases'
+
+let $y := distinct-values(doc("teachers.xml")/teachers/teacher[name="Alexandra Cristea"]/course/submodule[name="Advanced Databases"]/year)
+RETURN <numYears>
+        {count($y)}
+       </numYears>
+
+
+i. I interpreted the question as asking for the total number of years Professor Cristea has taught the 'Advanced Databases' submodule, including the current year, at Durham University. My solution returns a count of the number of years that they taught this module and as such is a correct solution.
+ii. I do not believe there are any limitations to my approach, it is suitable and correct even if the Database were extended.
+iii. 
+
+<numYears> 2 </numYears>
+
+iv. count(doc("teachers.xml")/teachers/teacher[name="Alexandra Cristea"]/course/submodule[name="Advanced Databases"]/year)

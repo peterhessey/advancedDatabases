@@ -1,0 +1,13 @@
+let $stu := doc("students.xml")//student
+let $tch := doc("teachers.xml")//teacher
+let $all := ($stu, $tch)
+
+return count{
+    FOR $person IN $all
+    WHERE not(exists($person/lastname)) and not(contains($person/name, " "))
+}
+
+i. The natural language query asks how many students and teachers in the database do not have a username stored for them. My solution checks to see if they have a last name varaible and if they have whitesapce in their name variable, either of which would indicate that they have a lastname stored in the database.
+ii. Limitations of this solution are that if someone had whitespace in their forename (i.e. double barelled forenames) but no lastname the query would not count them.
+iii. 0
+iv. This would not be possible in XPath as it requires the joining of files.
