@@ -1,0 +1,17 @@
+XPath Query to find all student who study 'advanced databases' this year
+
+doc('students.xml')/students[@year="2019-2020"]//student[//submodule="Advanced Databses"]
+
+i. I interpreted this as asking for all student elements in students.xml that contained "advanced databases" as a submodule
+ii. This approach does not return the student names, but instead the entire elements
+iii.
+
+<student enrolmentDate = "2017">
+    <name>John Smith</name>
+    <course> 
+        <name>Software, Systems and Applications III</name>
+        <submodule>Advanced Databases</submodule>
+        <submodule>Web Technology</submodule>
+    </course>
+    <course>Computing Methodologies III</course>
+</student>
